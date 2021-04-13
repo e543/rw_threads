@@ -1,4 +1,4 @@
 # delaunay
 
-Тестирование методов проверки условия  3-D треангуляции Делоне
-Testing methods for verifying the 3-D Delaunay triangulation condition
+Тестирование методов проверки условия Делоне в 3-D триангуляции.
+Testing methods for checking the Delaunay condition in 3-D triangulation.
