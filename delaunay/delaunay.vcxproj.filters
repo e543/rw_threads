@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Logic">
+      <UniqueIdentifier>{2149e510-eef3-4e94-a22a-11c8adb4c572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Logic\interfaces">
+      <UniqueIdentifier>{d55b6af4-6b53-43c4-ac77-e4ec5d8589dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Logic\Output">
+      <UniqueIdentifier>{dbc25bf8-2d62-41d9-9353-2dd633274eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Logic\enums">
+      <UniqueIdentifier>{7ac2f0ee-7e04-4e28-9a2a-d52f6a43752d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Logic\Methods">
+      <UniqueIdentifier>{3a8eaf8a-db83-422e-8fb0-b74c6dab0d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Geom">
+      <UniqueIdentifier>{3496cc82-1588-492c-ac28-0fdab69c2d7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Geom\Structures">
+      <UniqueIdentifier>{e0e1c892-c7f0-43ca-b1cc-22e15fe03cc1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleHelper.cpp">
+      <Filter>Исходные файлы\Logic\Output</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ITest.h">
+      <Filter>Исходные файлы\Logic\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMethod.h">
+      <Filter>Исходные файлы\Logic\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="RunHelper.h">
+      <Filter>Исходные файлы\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMethod.h">
+      <Filter>Исходные файлы\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="TestsRunner.h">
+      <Filter>Исходные файлы\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleHelper.h">
+      <Filter>Исходные файлы\Logic\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="IMessage.h">
+      <Filter>Исходные файлы\Logic\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="MethodName.h">
+      <Filter>Исходные файлы\Logic\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods.h">
+      <Filter>Исходные файлы\Logic\Methods</Filter>
+    </ClInclude>
+    <ClInclude Include="PointState.h">
+      <Filter>Исходные файлы\Logic\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix33.h">
+      <Filter>Исходные файлы\Geom\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix44.h">
+      <Filter>Исходные файлы\Geom\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix55.h">
+      <Filter>Исходные файлы\Geom\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec3.h">
+      <Filter>Исходные файлы\Geom\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="geom.h">
+      <Filter>Исходные файлы\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Исходные файлы\Geom\Structures</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="delaunay.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>
