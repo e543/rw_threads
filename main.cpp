@@ -2,7 +2,7 @@
 #include <iostream>
 #include <boost/thread.hpp>
 
-const size_t N = 500;				// count of records
+const size_t N = 10;				// count of new records
 int shared_mem = 0;					// data
 
 boost::mutex mtx_read;
@@ -12,7 +12,7 @@ void write() {
 	// Enter
 	for (std::size_t i = 0; i < N; ++i) {
 		{
-			boost::this_thread::sleep(boost::posix_time::milliseconds(10));	// time to calculate new data
+			boost::this_thread::sleep(boost::posix_time::milliseconds(100));	// time to calculate new data
 
 			mtx_read.lock();  // block to write data
 			{
@@ -29,6 +29,7 @@ void read() {
 		{
 			mtx_write.lock();  // block to read data
 			{
+				boost::this_thread::sleep(boost::posix_time::milliseconds(800)); // time to write new data
 				std::cout << "Write to file:\t" << shared_mem << std::endl;					
 			}
 			mtx_read.unlock(); 
