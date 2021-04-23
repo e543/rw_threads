@@ -31,7 +31,7 @@ void read() {
 			{
 				std::cout << "Write to file:\t" << shared_mem << std::endl;					
 			}
-			mtx_read.unlock(); // block to read data
+			mtx_read.unlock(); 
 		}
 	}
 	// Exit
