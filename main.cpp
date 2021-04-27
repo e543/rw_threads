@@ -2,45 +2,83 @@
 #include <iostream>
 #include <boost/thread.hpp>
 
-const size_t N = 10;				// count of new records
-int shared_mem = 0;					// data
+const size_t N = 10;			// count of new records
+int thr_count = 4;				// count of threads
+int shared_mem = 0;				// data
 
-boost::mutex mtx_read;
-boost::mutex mtx_write;
+boost::barrier bar_read(thr_count);
+boost::barrier bar_write(thr_count);
 
 void write() {
 	// Enter
 	for (std::size_t i = 0; i < N; ++i) {
 		{
-			boost::this_thread::sleep(boost::posix_time::milliseconds(100));	// time to calculate new data
+			boost::this_thread::sleep(boost::posix_time::milliseconds(600));	// time to calculate new data
 
-			mtx_read.lock();  // block to write data
+			bar_read.wait();  // block to write data
 			{
-				std::cout << "Calculated data:\t" << ++shared_mem << "\t";		
+				std::cout << std::endl << std::endl << "Calculated data:\t" << ++shared_mem << std::endl;
 			}
-			mtx_write.unlock();
+			bar_write.wait();
 		}
 	}
-	mtx_read.unlock();
+	bar_read.wait();
 }
-void read() {
-	mtx_write.unlock();
+void readF() {
+	bar_read.wait();
 	for (std::size_t i = 0; i < N; ++i) {
 		{
-			mtx_write.lock();  // block to read data
+			bar_write.wait(); // block to read data
 			{
-				boost::this_thread::sleep(boost::posix_time::milliseconds(800)); // time to write new data
-				std::cout << "Write to file:\t" << shared_mem << std::endl;					
+				boost::this_thread::sleep(boost::posix_time::milliseconds(600)); // time to write new data
+				std::cout << "Write to File:\t" << shared_mem << std::endl;
 			}
-			mtx_read.unlock(); 
+			bar_read.wait();
 		}
 	}
 	// Exit
 }
+
+void readG() {
+	bar_read.wait();
+	for (std::size_t i = 0; i < N; ++i) {
+		{
+			bar_write.wait(); // block to read data
+			{
+				boost::this_thread::sleep(boost::posix_time::milliseconds(600)); // time to write new data
+				std::cout << "Write to Game:\t" << shared_mem << std::endl;
+			}
+			bar_read.wait();
+		}
+	}
+	// Exit
+}
+
+void readNW() {
+	bar_read.wait();
+	for (std::size_t i = 0; i < N; ++i) {
+		{
+			bar_write.wait();  // block to read data
+			{
+				boost::this_thread::sleep(boost::posix_time::milliseconds(600)); // time to write new data
+				std::cout << "Write to Network:\t" << shared_mem << std::endl;
+			}
+			bar_read.wait();
+		}
+	}
+	// Exit
+}
+
 int main() {
 	srand(time(NULL));
+
 	boost::thread t1(&write);
-	boost::thread t2(&read);
+	boost::thread t2(&readF);
+	boost::thread t3(&readG);
+	boost::thread t4(&readNW);
 	t1.join();
 	t2.join();
+	t3.join();
+	t4.join();
 }
+
